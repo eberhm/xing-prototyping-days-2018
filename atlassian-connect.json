@@ -1,0 +1,95 @@
+{
+  "key": "my-add-on",
+  "name": "Stackoverflow helper",
+  "description": "This addon will help you whenever you drop an open question in a chat room ended with two question marks (??)",
+  "vendor": {
+    "name": "Angry Nerds",
+    "url": "https://www.hipchat.com"
+  },
+  "links": {
+    "self": "{{localBaseUrl}}/atlassian-connect.json",
+    "homepage": "{{localBaseUrl}}"
+  },
+  "capabilities": {
+    "hipchatApiConsumer": {
+      "scopes": [
+        "send_notification",
+        "view_room"
+      ],
+      "avatar": {
+        "url": "{{localBaseUrl}}/img/logo.png",
+        "url@2x": "{{localBaseUrl}}/img/logo.png"
+      }
+    },
+    "installable": {
+      "callbackUrl": "{{localBaseUrl}}/installable"
+    },
+    "configurable": {
+      "url": "{{localBaseUrl}}/config"
+    },
+    "webhook": {
+      "url": "{{localBaseUrl}}/startSession",
+      "pattern": "\\?\\?",
+      "event": "room_message",
+      "name": "Stack Overflow",
+      "authentication": "jwt"
+    },
+    "glance": [
+      {
+        "name": {
+          "value": "Stackoverflow helper"
+        },
+        "queryUrl": "{{localBaseUrl}}/glance",
+        "key": "sample.glance",
+        "target": "sample.sidebar",
+        "icon": {
+          "url": "{{localBaseUrl}}/img/logo.png",
+          "url@2x": "{{localBaseUrl}}/img/logo.png"
+        }
+      }
+    ],
+    "webPanel": [
+      {
+        "key": "sample.sidebar",
+        "name": {
+          "value": "Hello Sidebar!"
+        },
+        "location": "hipchat.sidebar.right",
+        "url": "{{localBaseUrl}}/sidebar"
+      }
+    ],
+    "dialog": [
+      {
+        "key": "sample.dialog",
+        "title": {
+          "value": "Hello Dialog!"
+        },
+        "url": "{{localBaseUrl}}/dialog",
+        "options": {
+          "style": "normal",
+          "primaryAction": {
+            "name": {
+              "value": "Ask me something!"
+            },
+            "key": "sample.dialog.action",
+            "enabled": true
+          },
+          "size": {
+            "width": "400px",
+            "height": "200px"
+          }
+        }
+      }
+    ],
+    "action": [
+      {
+        "key": "sample.action",
+        "name": {
+          "value": "Open Hello Dialog!"
+        },
+        "target": "sample.dialog",
+        "location": "hipchat.input.action"
+      }
+    ]
+  }
+}

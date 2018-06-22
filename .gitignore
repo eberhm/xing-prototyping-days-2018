@@ -1,0 +1,8 @@
+*.idea
+.DS_Store
+node_modules
+*.pem
+.vscode
+dump.rdb
+store.db
+node_modules
